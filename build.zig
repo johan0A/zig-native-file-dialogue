@@ -21,6 +21,7 @@ pub fn build(b: *B) void {
         });
 
         const run_tests = b.addRunArtifact(tests);
+        run_tests.has_side_effects = true;
         const test_step = b.step("test", "Run unit tests");
         test_step.dependOn(&run_tests.step);
     }
